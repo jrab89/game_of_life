@@ -2,17 +2,17 @@
   "name": "hello_typescript",
   "version": "0.0.1",
   "description": "",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "typescript": "^1.7",
-    "http-server": "^0.8.5",
-    "browserify": "^13.0"
+    "browserify": "^13.0.0",
+    "typescript": "^1.7.5",
+    "watchy": "^0.6.5"
   },
   "scripts": {
-    "tsc": "tsc app.ts",
-    "browserify": "browserify app.js -o bundle.js -s app",
-    "listen": "http-server",
-    "all": "npm run tsc &&  npm run browserify && npm run listen"
+    "tsc": "tsc --outFile build/ts_out.js src/app.ts",
+    "browserify": "browserify build/ts_out.js -o build/bundle.js -s app",
+    "build": "npm run tsc && npm run browserify",
+    "watch": "watchy -w src -- npm run build",
+    "exec": "exec"
   }
 }
