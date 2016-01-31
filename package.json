@@ -5,6 +5,8 @@
   "dependencies": {},
   "devDependencies": {
     "browserify": "^13.0.0",
+    "tsd": "^0.6.5",
+    "tslint": "^3.3.0",
     "typescript": "^1.7.5",
     "watchy": "^0.6.5"
   },
