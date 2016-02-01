@@ -14,7 +14,8 @@
     "tsc": "tsc",
     "browserify": "browserify --debug build/tsc/app.js -o build/bundle.js",
     "build": "npm run tsc && npm run browserify",
-    "watch": "watchy -w src -- npm run build",
+    "watch": "watchy -w src -w test -- npm run build",
+    "test": "npm run tsc && node build/tsc/test/test_grid.js",
     "exec": "exec"
   }
 }

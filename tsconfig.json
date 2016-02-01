@@ -7,5 +7,9 @@
     "outDir": "./build/tsc",
     "target": "ES5"
   },
-  "files": ["./src/app.ts"]
+  "files": [
+    "./src/app.ts",
+    "./test/test_grid.ts",
+    "typings/tsd.d.ts"
+  ]
 }
