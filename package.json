@@ -11,8 +11,8 @@
     "watchy": "^0.6.5"
   },
   "scripts": {
-    "tsc": "tsc --outFile build/ts_out.js src/app.ts",
-    "browserify": "browserify build/ts_out.js -o build/bundle.js -s app",
+    "tsc": "tsc",
+    "browserify": "browserify --debug build/tsc/app.js -o build/bundle.js",
     "build": "npm run tsc && npm run browserify",
     "watch": "watchy -w src -- npm run build",
     "exec": "exec"

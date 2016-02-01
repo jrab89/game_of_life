@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
-    "target": "es5"
-  }
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "outDir": "./build/tsc",
+    "target": "ES5"
+  },
+  "files": ["./src/app.ts"]
 }
