@@ -8,13 +8,14 @@ canvas.width = width;
 canvas.height = height;
 document.body.appendChild(canvas);
 
-const context = <CanvasRenderingContext2D>canvas.getContext("2d");
+const context = canvas.getContext("2d");
 
 let currentGrid = new Grid(Grid.random(width, height));
 
 function draw() {
     window.requestAnimationFrame(draw);
-    context.putImageData(currentGrid.toImageData(context), 0, 0);
+    const imageData = new ImageData(currentGrid.toImageDataArray(), width, height);
+    context.putImageData(imageData, 0, 0);
 }
 
 function updateState() {

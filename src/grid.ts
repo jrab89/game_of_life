@@ -20,22 +20,22 @@ export class Grid {
         this.height = grid[0].length;
     }
 
-    toImageData(context: CanvasRenderingContext2D) {
-        let imageData = context.createImageData(this.width, this.height);
+    toImageDataArray() {
+        let imageDataArray = new Uint8ClampedArray(this.width * this.height * 4);
 
         for (let y = 0; y < this.height; y++) {
             for (let x = 0; x < this.width; x++) {
-                let imageDataIndex = 4 * y * this.width + 4 * x;
+                let index = 4 * y * this.width + 4 * x;
                 let color = this.grid[x][y] ? 0 : 255; // true is black, false is white
 
-                imageData.data[imageDataIndex]     = color; // red
-                imageData.data[imageDataIndex + 1] = color; // green
-                imageData.data[imageDataIndex + 2] = color; // blue
-                imageData.data[imageDataIndex + 3] = 255;   // alpha
+                imageDataArray[index]     = color; // red
+                imageDataArray[index + 1] = color; // green
+                imageDataArray[index + 2] = color; // blue
+                imageDataArray[index + 3] = 255;   // alpha
             }
         }
 
-        return imageData;
+        return imageDataArray;
     }
 
     aliveNeighborsAt(x: number, y: number) {

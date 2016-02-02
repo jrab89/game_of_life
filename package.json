@@ -8,13 +8,13 @@
     "tsd": "^0.6.5",
     "tslint": "^3.3.0",
     "typescript": "^1.7.5",
-    "watchy": "^0.6.5"
+    "watch": "^0.17.1"
   },
   "scripts": {
     "tsc": "tsc",
-    "browserify": "browserify --debug build/tsc/app.js -o build/bundle.js",
+    "browserify": "browserify --debug build/tsc/src/app.js -o build/bundle.js",
     "build": "npm run tsc && npm run browserify",
-    "watch": "watchy -w src -w test -- npm run build",
+    "watch": "watch 'npm run build' src test",
     "test": "npm run tsc && node build/tsc/test/test_grid.js",
     "exec": "exec"
   }

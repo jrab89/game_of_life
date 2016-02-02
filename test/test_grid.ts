@@ -29,3 +29,10 @@ assert.deepEqual(glider.next().grid, [
     [false, true,  true],
     [false, true,  false]
 ]);
+
+assert.deepEqual(block.toImageDataArray(), new Uint8ClampedArray(
+    [0, 0, 0, 255,
+     0, 0, 0, 255,
+     0, 0, 0, 255,
+     0, 0, 0, 255])
+);
