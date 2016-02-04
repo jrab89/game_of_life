@@ -1,16 +1,34 @@
 import { Grid } from "./grid";
 
-const width = 800;
-const height = 600;
+const width = 400;
+const height = 300;
 
 const canvas = document.createElement("canvas");
+const context = canvas.getContext("2d");
+
 canvas.width = width;
 canvas.height = height;
 document.body.appendChild(canvas);
-
-const context = canvas.getContext("2d");
+document.getElementById("canvas-div").appendChild(canvas);
 
 let currentGrid = new Grid(Grid.random(width, height));
+let stopped = true;
+let shouldClear = false;
+let shouldRandomize = false;
+
+document.getElementById("toggle-start").onclick = function(e) {
+    stopped = !stopped;
+    let newText = stopped ? "Start" : "Stop";
+    e.srcElement.textContent = newText;
+};
+
+document.getElementById("clear").onclick = function(e) {
+    shouldClear = true;
+};
+
+document.getElementById("randomize").onclick = function(e) {
+    shouldRandomize = true;
+};
 
 function draw() {
     window.requestAnimationFrame(draw);
@@ -19,7 +37,19 @@ function draw() {
 }
 
 function updateState() {
-    currentGrid = currentGrid.next();
+    if (shouldClear) {
+        shouldClear = false;
+        currentGrid = new Grid(Grid.cleared(width, height));
+    }
+
+    if (shouldRandomize) {
+        shouldRandomize = false;
+        currentGrid = new Grid(Grid.random(width, height));
+    }
+
+    if (!stopped) {
+        currentGrid = currentGrid.next();
+    }
 }
 
 window.setInterval(updateState, 100);
