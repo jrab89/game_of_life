@@ -15,6 +15,19 @@ export class Grid {
         return grid;
     }
 
+    static cleared(width: number, height: number) {
+        let grid: boolean[][] = [];
+
+        for (let x = 0; x < width; x++) {
+            grid[x] = [];
+            for (let y = 0; y < height; y++) {
+                grid[x][y] = false;
+            }
+        }
+
+        return grid;
+    }
+
     constructor(public grid: boolean[][]) {
         this.width = grid.length;
         this.height = grid[0].length;
