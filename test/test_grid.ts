@@ -36,3 +36,10 @@ assert.deepEqual(block.toImageDataArray(), new Uint8ClampedArray(
      0, 0, 0, 255,
      0, 0, 0, 255])
 );
+
+assert.deepEqual(block.toggle([]), block);
+assert.deepEqual(beehive.toggle([]), beehive);
+assert.deepEqual(block.toggle([{x: 0, y: 0}, {x: 1, y: 0}]), new Grid([
+    [false, true],
+    [false, true]
+]));

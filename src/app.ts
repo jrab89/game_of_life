@@ -30,6 +30,11 @@ document.getElementById("randomize").onclick = function(e) {
     shouldRandomize = true;
 };
 
+canvas.onclick = function(e) {
+    let [x, y] = [e.offsetX, e.offsetY];
+    currentGrid.grid[x][y] = !currentGrid.grid[x][y];
+};
+
 function draw() {
     window.requestAnimationFrame(draw);
     const imageData = new ImageData(currentGrid.toImageDataArray(), width, height);

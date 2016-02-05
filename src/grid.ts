@@ -118,4 +118,25 @@ export class Grid {
 
         return new Grid(newGrid);
     }
+
+    toggle(coordsToToggle: {x: number, y: number}[]) {
+        if (coordsToToggle.length === 0) {
+            return this;
+        }
+
+        let gridCopy: boolean[][] = [];
+
+        for (let x = 0; x < this.width; x++) {
+            gridCopy[x] = [];
+            for (let y = 0; y < this.height; y++) {
+                gridCopy[x][y] = this.grid[x][y];
+            }
+        }
+
+        coordsToToggle.forEach(function(coord) {
+            gridCopy[coord.x][coord.y] = !gridCopy[coord.x][coord.y];
+        });
+
+        return new Grid(gridCopy);
+    }
 }
