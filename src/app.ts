@@ -15,6 +15,7 @@ let currentGrid = new Grid(Grid.random(width, height));
 let stopped = true;
 let shouldClear = false;
 let shouldRandomize = false;
+let isMouseDown = false;
 
 document.getElementById("toggle-start").onclick = function(e) {
     stopped = !stopped;
@@ -30,9 +31,22 @@ document.getElementById("randomize").onclick = function(e) {
     shouldRandomize = true;
 };
 
-canvas.onclick = function(e) {
+canvas.onmousedown = function(e) {
+    isMouseDown = true;
+
     let [x, y] = [e.offsetX, e.offsetY];
     currentGrid.grid[x][y] = !currentGrid.grid[x][y];
+};
+
+canvas.onmousemove = function(e) {
+    if (isMouseDown) {
+        let [x, y] = [e.offsetX, e.offsetY];
+        currentGrid.grid[x][y] = !currentGrid.grid[x][y];
+    }
+};
+
+canvas.onmouseup = function(e) {
+    isMouseDown = false;
 };
 
 function draw() {
