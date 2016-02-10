@@ -1,4 +1,5 @@
 import { Grid } from "./grid";
+import { Point } from "./point";
 
 const width = 400;
 const height = 300;
@@ -16,6 +17,7 @@ let stopped = true;
 let shouldClear = false;
 let shouldRandomize = false;
 let isMouseDown = false;
+let lastMouseMove = new Point(0, 0);
 
 document.getElementById("toggle-start").onclick = function(e) {
     stopped = !stopped;
@@ -36,12 +38,16 @@ canvas.onmousedown = function(e) {
 
     let [x, y] = [e.offsetX, e.offsetY];
     currentGrid.grid[x][y] = !currentGrid.grid[x][y];
+    lastMouseMove = new Point(x, y);
 };
 
 canvas.onmousemove = function(e) {
     if (isMouseDown) {
-        let [x, y] = [e.offsetX, e.offsetY];
-        currentGrid.grid[x][y] = !currentGrid.grid[x][y];
+        let currentPoint = new Point(e.offsetX, e.offsetY);
+        let line = lastMouseMove.lineTo(currentPoint);
+        currentGrid.togglePoints(line);
+
+        lastMouseMove = currentPoint;
     }
 };
 

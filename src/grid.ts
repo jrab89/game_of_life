@@ -1,3 +1,5 @@
+import { Point } from "./point";
+
 export class Grid {
     width: number;
     height: number;
@@ -119,8 +121,9 @@ export class Grid {
         return new Grid(newGrid);
     }
 
-    toggle(coordsToToggle: {x: number, y: number}[]) {
-        if (coordsToToggle.length === 0) {
+    // toggle and togglePoints should be the same function
+    toggle(pointsToToggle: Point[]) {
+        if (pointsToToggle.length === 0) {
             return this;
         }
 
@@ -133,10 +136,17 @@ export class Grid {
             }
         }
 
-        coordsToToggle.forEach(function(coord) {
-            gridCopy[coord.x][coord.y] = !gridCopy[coord.x][coord.y];
+        pointsToToggle.forEach(function(point) {
+            gridCopy[point.x][point.y] = !gridCopy[point.x][point.y];
         });
 
         return new Grid(gridCopy);
+    }
+
+    togglePoints(pointsToToggle: Point[]) {
+        pointsToToggle.forEach((point) => {
+            let {x, y} = point;
+            this.grid[x][y] = !this.grid[x][y];
+        });
     }
 }

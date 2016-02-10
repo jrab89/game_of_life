@@ -1,4 +1,5 @@
 import { Grid } from "../src/grid";
+import { Point } from "../src/point";
 import * as assert from "assert";
 
 const beehive = new Grid([
@@ -39,7 +40,7 @@ assert.deepEqual(block.toImageDataArray(), new Uint8ClampedArray(
 
 assert.deepEqual(block.toggle([]), block);
 assert.deepEqual(beehive.toggle([]), beehive);
-assert.deepEqual(block.toggle([{x: 0, y: 0}, {x: 1, y: 0}]), new Grid([
+assert.deepEqual(block.toggle([new Point(0, 0), new Point(1, 0)]), new Grid([
     [false, true],
     [false, true]
 ]));

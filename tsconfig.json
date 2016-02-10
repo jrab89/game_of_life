@@ -10,6 +10,7 @@
   "files": [
     "./src/app.ts",
     "./test/test_grid.ts",
+    "./test/test_point.ts",
     "typings/tsd.d.ts"
   ]
 }
