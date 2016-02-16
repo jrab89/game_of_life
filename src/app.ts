@@ -1,8 +1,8 @@
 import { Grid } from "./grid";
 import { Point } from "./point";
 
-const width = 400;
-const height = 300;
+const width = 800;
+const height = 600;
 
 const canvas = document.createElement("canvas");
 const context = canvas.getContext("2d");
