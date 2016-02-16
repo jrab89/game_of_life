@@ -8,6 +8,7 @@
     "tsd": "^0.6.5",
     "tslint": "^3.3.0",
     "typescript": "^1.7.5",
+    "uglify-js": "^2.6.1",
     "watch": "^0.17.1"
   },
   "scripts": {
@@ -16,6 +17,7 @@
     "build": "npm run tsc && npm run browserify",
     "watch": "watch 'npm run build' src test",
     "test": "npm run tsc && node build/tsc/test/test_grid.js && node build/tsc/test/test_point.js",
-    "exec": "exec"
+    "exec": "exec",
+    "release": "npm run build && uglifyjs build/bundle.js --screw-ie8 --compress --mangle -o build/bundle.js"
   }
 }
