@@ -11,3 +11,8 @@ $ npm run watch
 ...
 $ open index.html
 ```
+
+Todo
+
+* [immutable-js](https://github.com/facebook/immutable-js/) to avoid updating grid in place or copying everything to a new grid?
+* Multiplayer with [peerjs](https://github.com/peers/peerjs)
